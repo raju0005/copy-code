@@ -21,8 +21,8 @@ export default {
         'contain': 'contain', // Adjust background size to contain
       },
       fontFamily:{
-        'font1' : ['Jersey 1',  'sans-serif'],
-        'font2':['Jersey 15', 'sans-serif']
+        'font1' : ['Jersey 10',  'sans-serif'],
+        'font2':['Play', 'sans-serif']
 
       }
     },

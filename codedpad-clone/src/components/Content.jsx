@@ -43,7 +43,7 @@ const Content = ({ uniq_id }) => {
   };
 
   return (
-    <div className=" flex items-center justify-center md:grid md:place-items-center">
+    <>
       {loading ? (<div
         className=" delay-250 animate-spin delay-50 duration-1000 bg-gradient-to-br border-4 shadow-inner shadow-neutral-700 border-neutral-950 from-yellow-800 to-yellow-600 rounded-full grid place-items-center z-0 h-20 w-20 relative"
       >
@@ -54,6 +54,8 @@ const Content = ({ uniq_id }) => {
           className="rounded-full bg-neutral-900 absolute rotate-[180deg] z-20 h-20 scale-50 w-2"
         ></div>
       </div>) : (
+        <div className=" flex flex-col gap-3 items-center justify-center md:grid md:place-items-center">
+          <h1 className='font-font2 text-[30px] md:text-[40px]'>Save Your Code Here !</h1>
         <div className='flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 md:w-[100%] w-[75%]'>
           <div className=''>
             <textarea
@@ -67,7 +69,7 @@ const Content = ({ uniq_id }) => {
             >
             </textarea>
           </div>
-          <button onClick={handleSave} className="flex justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition duration-200 text-white hover:px-5 hover:py-[6px] hover:bg-gradient-to-r from-yellow-500 to-yellow-600">
+          <button onClick={handleSave} className="flex font-font2 justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition duration-200 text-white hover:px-5 hover:py-[6px] hover:bg-gradient-to-r from-yellow-500 to-yellow-600">
             Save
             <lord-icon
               src="https://cdn.lordicon.com/rbbnmpcf.json"
@@ -76,8 +78,11 @@ const Content = ({ uniq_id }) => {
             >
             </lord-icon>
           </button>
-        </div>)}
-    </div>
+        </div>
+        </div>
+        )}
+    
+    </>
 
   );
 };
