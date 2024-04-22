@@ -17,8 +17,11 @@ app.post('/', async(req, res) => {
     }
     
 });
+app.get('/hello', async(req, res) => {
+  res.send('hello');
+});
 app.get('/', async(req, res) => {
-  res.json("hello")
+ 
     const uniq_id = req.query.uniq_id;
     try {
       const userData = await UserData.findOne({ uniq_id });
