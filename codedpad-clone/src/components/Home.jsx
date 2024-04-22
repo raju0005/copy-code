@@ -17,7 +17,7 @@ const Home = ({ submit }) => {
     };
 
     return (
-        <div className=" pl-[32px] flex items-center justify-center md:grid md:place-items-center    md:container">
+        <div className=" pl-[35px] flex items-center justify-center md:grid md:place-items-center    md:container">
         <div className=' px-4 flex flex-col items-center'>
             <div className='mb-20'><img className="md:w-[500px] w-[300px]" src={logo} alt="" /></div>
             <div className=" px-3 md:px-0 md:input">
