@@ -4,10 +4,7 @@ require('dotenv').config();
 
 const mongoURI = process.env.MONGODB_URL;
 
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(mongoURI)
 const newSchema=new mongoose.Schema({
     uniq_id:{
         type:String,
