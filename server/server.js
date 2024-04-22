@@ -26,6 +26,9 @@ app.get('/', async(req, res) => {
       res.status(500).json({ error: error.message });
     }
    } );
+   app.listen(4000, () => {
+    console.log("Server running on port 4000");
+});
    module.exports = app;
 
 
