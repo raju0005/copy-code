@@ -7,7 +7,7 @@ const Content = ({ uniq_id }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/?uniq_id=${uniq_id}`);
+        const response = await axios.get(`https://copy-code-server.vercel.app/?uniq_id=${uniq_id}`);
         if (response.data && response.data.content) {
           setContent(response.data.content);
         } else {
