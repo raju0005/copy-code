@@ -1,10 +1,6 @@
-const mongoose=require('mongoose');
-require('dotenv').config(); 
+const mongoose=require('mongoose')
 
-
-const mongoURI = process.env.MONGODB_URL;
-
-mongoose.connect(mongoURI)
+mongoose.connect("mongodb+srv://copy-code:iKMGkrd4Y4rKy6Cf@cluster0.un7zsws.mongodb.net/")
 const newSchema=new mongoose.Schema({
     uniq_id:{
         type:String,
