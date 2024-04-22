@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const Content = ({ uniq_id }) => {
   const [content, setContent] = useState('');
+  const [loading, setloading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,9 @@ const Content = ({ uniq_id }) => {
         }
       } catch (error) {
         console.error(error);
+      }
+      finally {
+        setloading(false);
       }
     };
 
@@ -40,30 +44,40 @@ const Content = ({ uniq_id }) => {
 
   return (
     <div className=" flex items-center justify-center md:grid md:place-items-center">
-  <div className='flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 md:w-[100%] w-[75%]'>
-    <div className=''>
-      <textarea
-        value={content}
-        onChange={handleChange}
-        className='w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500'
-        name=""
-        id=""
-        cols="70"
-        rows="15"
+      {loading ? (<div
+        className=" delay-250 animate-spin delay-50 duration-1000 bg-gradient-to-br border-4 shadow-inner shadow-neutral-700 border-neutral-950 from-yellow-800 to-yellow-600 rounded-full grid place-items-center z-0 h-20 w-20 relative"
       >
-      </textarea>
+        <div
+          className="rounded-full bg-neutral-900 absolute rotate-[90deg] z-20 h-20 scale-50 w-2"
+        ></div>
+        <div
+          className="rounded-full bg-neutral-900 absolute rotate-[180deg] z-20 h-20 scale-50 w-2"
+        ></div>
+      </div>) : (
+        <div className='flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 md:w-[100%] w-[75%]'>
+          <div className=''>
+            <textarea
+              value={content}
+              onChange={handleChange}
+              className='w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500'
+              name=""
+              id=""
+              cols="70"
+              rows="15"
+            >
+            </textarea>
+          </div>
+          <button onClick={handleSave} className="flex justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition duration-200 text-white hover:px-5 hover:py-[6px] hover:bg-gradient-to-r from-yellow-500 to-yellow-600">
+            Save
+            <lord-icon
+              src="https://cdn.lordicon.com/rbbnmpcf.json"
+              trigger="hover"
+              colors="primary:#ffffff"
+            >
+            </lord-icon>
+          </button>
+        </div>)}
     </div>
-    <button onClick={handleSave} className="flex justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition duration-200 text-white hover:px-5 hover:py-[6px] hover:bg-gradient-to-r from-yellow-500 to-yellow-600">
-      Save
-      <lord-icon
-        src="https://cdn.lordicon.com/rbbnmpcf.json"
-        trigger="hover"
-        colors="primary:#ffffff"
-      >
-      </lord-icon>
-    </button>
-  </div>
-</div>
 
   );
 };
