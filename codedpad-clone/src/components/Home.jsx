@@ -17,8 +17,8 @@ const Home = ({ submit }) => {
     };
 
     return (
-        <div className="px-6 py-2 md:px-0 md:container">
-        <div className=' px-5 flex flex-col items-center'>
+        <div className="px-4 py-2 md:px-0 md:container">
+        <div className=' px-4 flex flex-col items-center'>
             <div className='mb-20'><img className="md:w-[500px] w-[300px]" src={logo} alt="" /></div>
             <div className=" px-4 md:px-0 md:input">
             <div className='flex justify-center flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20  border-[3px] border-white w-[400px] h-[300px]'>
