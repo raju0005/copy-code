@@ -11,7 +11,7 @@ function App() {
 
   const handleSubmit = async (uniq_id) => {
     try {
-      const response = await axios.get(`http://localhost:4000/?uniq_id=${uniq_id}`);      
+      const response = await axios.get(`https://copy-code-server.vercel.app/?uniq_id=${uniq_id}`);      
       setuniq_id(uniq_id);
       if (response.data && response.data.content) {
         setData(response.data.content);

@@ -32,7 +32,7 @@ const Content = ({ uniq_id }) => {
 
   const handleSave = async () => {
     try {
-      await axios.post('http://localhost:4000/', { uniq_id, content: content });
+      await axios.post('https://copy-code-server.vercel.app/', { uniq_id, content: content });
     } catch (error) {
       console.error(error);
     }
