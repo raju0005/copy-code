@@ -4,6 +4,7 @@ import axios from 'axios';
 const Content = ({ uniq_id }) => {
   const [content, setContent] = useState('');
   const [loading, setloading] = useState(true)
+  const [save, setsave] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +38,7 @@ const Content = ({ uniq_id }) => {
   const handleSave = async () => {
     try {
       await axios.post('https://copy-code-server.vercel.app/', { uniq_id, content: content });
+      setsave(true)
     } catch (error) {
       console.error(error);
     }
@@ -54,9 +56,9 @@ const Content = ({ uniq_id }) => {
           className="rounded-full bg-neutral-900 absolute rotate-[180deg] z-20 h-20 scale-50 w-2"
         ></div>
       </div>) : (
-        <div className=" flex flex-col gap-3 items-center justify-center md:grid md:place-items-center">
-          <h1 className='font-font2 text-[30px] md:text-[40px]'>Save Your Code Here !</h1>
-        <div className='flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 md:w-[100%] w-[75%]'>
+        <div className=" flex flex-col gap-3 items-center justify-center sm:grid sm:place-items-center ">
+          <h1 className='font-font2 text-[30px] sm:text-[40px]'>Bro ,Save Your Code Here !</h1>
+        <div className='flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 sm:w-[100%] w-[95%]'>
           <div className=''>
             <textarea
               value={content}
@@ -78,6 +80,7 @@ const Content = ({ uniq_id }) => {
             >
             </lord-icon>
           </button>
+          <p className={`${!save ? 'hidden' :''} font-font2` }> Bro,Your Code is Saved  !</p>
         </div>
         </div>
         )}

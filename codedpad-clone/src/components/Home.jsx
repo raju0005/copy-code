@@ -17,13 +17,13 @@ const Home = ({ submit }) => {
     };
 
     return (
-        <div className=" pl-[35px] flex items-center justify-center md:grid md:place-items-center    md:container">
+        <div className=" pl-[35px] flex items-center justify-center sm:grid sm:place-items-center    sm:container">
             <div className=' px-4 flex flex-col items-center'>
 
-                <div className='mb-20'><img className="md:w-[500px] w-[300px]" src={logo} alt="" /></div>
+                <div className='mb-20'><img className="sm:w-[500px] w-[300px]" src={logo} alt="" /></div>
                 <div className=" px-3 md:px-0 md:input">
                     <div className='flex justify-center flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20  border-[3px] border-white w-[400px] h-[300px]'>
-                        <h4 className='text-yellow-500 text-center lowercase font-font2 px-5'>To Get Engine start Enter New Username or to open code Enter Used Username</h4>
+                        <h4 className='text-yellow-500 text-center lowercase font-font2 px-5'>Bro to start Enter New Username or to open your code Enter Used Username </h4>
                         <div className='flex justify-center items-center gap-10'>
                             <input
                                 placeholder='Username'
