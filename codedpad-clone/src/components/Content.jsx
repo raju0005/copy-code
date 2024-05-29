@@ -63,6 +63,7 @@ const Content = ({ uniq_id }) => {
             <textarea
               value={content}
               onChange={handleChange}
+              placeholder="Any text you enter will be saved here"
               className='w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500'
               name=""
               id=""
