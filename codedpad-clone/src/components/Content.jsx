@@ -71,6 +71,7 @@ const Content = ({ uniq_id }) => {
   const handleLanguageChange = (selectedOption) => {
     setLanguage(selectedOption);
   };
+
   const handleCopy = () => {
     navigator.clipboard
       .writeText(content)
@@ -91,24 +92,23 @@ const Content = ({ uniq_id }) => {
           <div className="rounded-full bg-neutral-900 absolute rotate-[180deg] z-20 h-20 scale-50 w-2"></div>
         </div>
       ) : (
-        <div className="flex flex-col gap-3 items-center justify-center sm:grid sm:place-items-center">
-          <h1 className="font-font2 text-[30px] sm:text-[40px]">
+        <div className="flex flex-col gap-3 md:gap-4 items-center justify-center  w-screen md:h-screen">
+          <h1 className="font-font2 text-[24px] sm:text-[30px] text-center">
             Bro, Save Your Code Here!
           </h1>
-          <div className="flex md:flex-row flex-col items-center p-2 justify-around gap-10">
-            <div className="flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-10 sm:w-[100%] w-[95%]">
+          <div className="flex flex-col md:flex-row items-center p-2 justify-center gap-5 sm:gap-10 w-full md:h-[70vh]  ">
+            <div className="flex flex-col items-center gap-5 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-5 w-full md:w-[50%]  h-[100%]">
               <textarea
                 value={content}
                 onChange={handleChange}
                 placeholder="Any text you enter will be saved here"
-                className="w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
-                cols="70"
-                rows="15"
+                className="w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
+                rows="12"
               ></textarea>
-              <div className="flex justify-around gap-5 ">
+              <div className="flex justify-around gap-2">
                 <button
                   onClick={handleCopy}
-                  className="flex font-font2 justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition-tranform transform text-white  hover:scale-105 hover:bg-gradient-to-r from-yellow-500 to-yellow-600"
+                  className="flex font-font2 justify-center items-center gap-2 border-[2px] border-yellow-400 px-3 py-1 bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] transition-transform transform text-white hover:scale-105 hover:bg-gradient-to-r from-yellow-500 to-yellow-600"
                 >
                   Copy
                   <lord-icon
@@ -120,7 +120,7 @@ const Content = ({ uniq_id }) => {
 
                 <button
                   onClick={handleSave}
-                  className="flex font-font2 justify-center items-center gap-3 border-[2px] border-yellow-400 px-4 py-[5px] bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] relative group transition-tranform transform text-white  hover:scale-105 hover:bg-gradient-to-r from-yellow-500 to-yellow-600"
+                  className="flex font-font2 justify-center items-center gap-2 border-[2px] border-yellow-400 px-3 py-1 bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 rounded-[6px] transition-transform transform text-white hover:scale-105 hover:bg-gradient-to-r from-yellow-500 to-yellow-600"
                 >
                   Save
                   <lord-icon
@@ -131,17 +131,17 @@ const Content = ({ uniq_id }) => {
                 </button>
               </div>
               <p className={`font-font2 text-[15px] ${message ? "" : "hidden"}`}>
-               Bro, {message}
+                Bro, {message}
               </p>
             </div>
-            <div className="flex flex-col items-center gap-10 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[3px] border-white p-10 sm:w-[100%] w-[95%]">
-              <div className="mb-5">
-                <label className="text-[20px] font-font2 text-yellow-500 mr-3 mb-2">
+            <div className="flex flex-col items-center gap-3 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[3px] border-white p-5 w-full md:w-[50%] h-[100%]">
+              <div className="mb-2 w-full">
+                <label className="text-[16px] font-font2 text-yellow-500 mr-3 mb-2">
                   Select Language:
                 </label>
                 <Select
                   value={languageOptions.find(
-                    (option) => option.value === language
+                    (option) => option.value === language.value
                   )}
                   onChange={handleLanguageChange}
                   options={languageOptions}
@@ -193,8 +193,8 @@ const Content = ({ uniq_id }) => {
                 />
               </div>
 
-              <div className="w-full mt-5">
-                <h2 className="font-font2 text-yellow-500 text-[18px]">
+              <div className="max-w-[100%] h-[500px] md:max-h-[100%] mt-3 overflow-auto">
+                <h2 className="font-font2 text-yellow-500 text-[16px]">
                   Preview:
                 </h2>
 
