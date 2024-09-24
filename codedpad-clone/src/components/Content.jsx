@@ -92,18 +92,18 @@ const Content = ({ uniq_id }) => {
           <div className="rounded-full bg-neutral-900 absolute rotate-[180deg] z-20 h-20 scale-50 w-2"></div>
         </div>
       ) : (
-        <div className="flex flex-col gap-3 md:gap-4 items-center justify-center  w-screen md:h-screen">
+        <div className="flex flex-col gap-3 md:gap-4 items-center justify-around w-screen h-screen p-3">
           <h1 className="font-font2 text-[24px] sm:text-[30px] text-center">
             Bro, Save Your Code Here!
           </h1>
-          <div className="flex flex-col md:flex-row items-center p-2 justify-center gap-5 sm:gap-10 w-full md:h-[70vh]  ">
-            <div className="flex flex-col items-center gap-5 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-5 w-full md:w-[50%]  h-[100%]">
+          <div className="flex flex-col md:flex-row items-center p-2 justify-center gap-3  w-full md:h-[70vh]">
+            <div className="flex flex-col items-center gap-5 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border-[3px] border-white p-5 w-full md:w-[50%]  md:h-[100%]">
               <textarea
                 value={content}
                 onChange={handleChange}
                 placeholder="Any text you enter will be saved here"
                 className="w-full border-[2px] border-yellow-400 text-white rounded-md bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 resize-none p-3 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
-                rows="12"
+                rows="15"
               ></textarea>
               <div className="flex justify-around gap-2">
                 <button
@@ -134,7 +134,7 @@ const Content = ({ uniq_id }) => {
                 Bro, {message}
               </p>
             </div>
-            <div className="flex flex-col items-center gap-3 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[3px] border-white p-5 w-full md:w-[50%] h-[100%]">
+            <div className="flex flex-col items-center gap-3 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[3px] border-white p-5 w-full md:w-[50%] md:h-[100%]">
               <div className="mb-2 w-full">
                 <label className="text-[16px] font-font2 text-yellow-500 mr-3 mb-2">
                   Select Language:
@@ -193,7 +193,7 @@ const Content = ({ uniq_id }) => {
                 />
               </div>
 
-              <div className="md:max-w-[100%] w-full h-[500px] md:max-h-[100%] mt-3 overflow-auto">
+              <div className="md:max-w-[100%] w-full h-[400px] md:max-h-[100%] mt-3 overflow-auto">
                 <h2 className="font-font2 text-yellow-500 text-[16px]">
                   Preview:
                 </h2>
