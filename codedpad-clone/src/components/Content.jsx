@@ -193,7 +193,7 @@ const Content = ({ uniq_id }) => {
                 />
               </div>
 
-              <div className="max-w-[100%] h-[500px] md:max-h-[100%] mt-3 overflow-auto">
+              <div className="md:max-w-[100%] w-full h-[500px] md:max-h-[100%] mt-3 overflow-auto">
                 <h2 className="font-font2 text-yellow-500 text-[16px]">
                   Preview:
                 </h2>
