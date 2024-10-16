@@ -1,40 +1,55 @@
 const express = require('express');
-const app= express();
 const cors = require('cors');
-const UserData = require('./mongoose');
+const UserData = require('./mongoose'); // Import the Mongoose model
+
+const app = express();
+
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.post('/', async(req, res) => {
-    const { uniq_id, content} = req.body;
-    try{
-    await UserData.findOneAndUpdate({uniq_id}, {content} ,{upsert:true});
+// Save or update content
+app.post('/', async (req, res) => {
+  const { uniq_id, content } = req.body;
+
+  try {
+    await UserData.findOneAndUpdate(
+      { uniq_id },
+      { content },
+      { upsert: true, new: true } // Upsert and return the updated document
+    );
     res.json({ success: true });
-    }
-    catch(err){
-        res.status(500).json({ error: error.message });
-    }
-    
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
-app.get('/hello', async(req, res) => {
-  res.send('hello');
-});
-app.get('/', async(req, res) => {
- 
-    const uniq_id = req.query.uniq_id;
-    try {
-      const userData = await UserData.findOne({ uniq_id });
+
+
+app.get('/', async (req, res) => {
+  const { uniq_id } = req.query;
+
+  try {
+    const userData = await UserData.findOne({ uniq_id });
+    if (userData) {
       res.json(userData);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    } else {
+      res.status(404).json({ error: 'No content found for this uniq_id' });
     }
-   } );
-//    app.listen(4000, () => {
-//     console.log("Server running on port 4000");
-// });
-   module.exports = app;
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 
+app.get('/hello', (req, res) => {
+  res.send('Hello');
+});
 
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
+module.exports = app;

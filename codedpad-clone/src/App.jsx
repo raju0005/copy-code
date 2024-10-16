@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { BrowserRouter as Router , Routes, Route } from 'react-router-dom'
-import axios from 'axios'; // Add this import
-
+import {createContext } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Content from './components/Content'
+
+export  const UniqId = createContext()
 
 function App() {
   const [data, setData] = useState('');
@@ -11,29 +12,24 @@ function App() {
 
   const handleSubmit = async (uniq_id) => {
     try {
-      const response = await axios.get(`https://copy-code-server.vercel.app/?uniq_id=${uniq_id}`);      
       setuniq_id(uniq_id);
-      if (response.data && response.data.content) {
-        setData(response.data.content);
-      } else {
-        setData('');
-      }
-      console.log(response.data)
-      
-    
     } catch (error) {
       console.error(error);
     }
   };
 
+ 
+
   return (
     <div>
+     <UniqId.Provider value={uniq_id}>
       <Router>
         <Routes>
           <Route path="/" element={<Home submit={handleSubmit} />} />
-          <Route path="/content" element={<Content uniq_id={uniq_id} />} />
+          <Route path="/content" element={<Content />} />
         </Routes>
       </Router>
+      </UniqId.Provider>
     </div>
   )
 }

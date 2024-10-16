@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UniqId } from "../App";
 import axios from "axios";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-import Select from "react-select";
 
-const Content = ({ uniq_id }) => {
+const Content = () => {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState(false);
+  const uniq_id = useContext(UniqId)
 
-  const [language, setLanguage] = useState({
-    value: "javascript",
-    label: "JavaScript",
-  });
-
-  const languageOptions = [
-    { value: "javascript", label: "JavaScript" },
-    { value: "python", label: "Python" },
-    { value: "java", label: "Java" },
-    { value: "html", label: "HTML" },
-    { value: "css", label: "CSS" },
-    { value: "typescript", label: "TypeScript" },
-    { value: "csharp", label: "C#" },
-    { value: "ruby", label: "Ruby" },
-    { value: "php", label: "PHP" },
-  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,9 +51,7 @@ const Content = ({ uniq_id }) => {
     }
   };
 
-  const handleLanguageChange = (selectedOption) => {
-    setLanguage(selectedOption);
-  };
+
 
   const handleCopy = () => {
     navigator.clipboard
@@ -133,75 +114,6 @@ const Content = ({ uniq_id }) => {
               <p className={`font-font2 text-[15px] ${message ? "" : "hidden"}`}>
                 Bro, {message}
               </p>
-            </div>
-            <div className="flex flex-col items-center gap-3 bg-black rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-30 border-[3px] border-white p-5 w-full md:w-[50%] md:h-[100%]">
-              <div className="mb-2 w-full">
-                <label className="text-[16px] font-font2 text-yellow-500 mr-3 mb-2">
-                  Select Language:
-                </label>
-                <Select
-                  value={languageOptions.find(
-                    (option) => option.value === language.value
-                  )}
-                  onChange={handleLanguageChange}
-                  options={languageOptions}
-                  styles={{
-                    control: (provided, state) => ({
-                      ...provided,
-                      backgroundColor: "transparent",
-                      borderColor:
-                        state.isFocused || state.isHovered
-                          ? "rgb(250 204 21/1)"
-                          : "rgb(250 204 21 / 1)",
-                      borderWidth: "2px",
-                      borderStyle: "solid",
-                      color: "white",
-                      boxShadow: "none",
-                    }),
-                    option: (provided, state) => ({
-                      ...provided,
-                      backgroundColor: state.isSelected
-                        ? "rgba(255, 215, 0, 0.8)"
-                        : state.isFocused
-                        ? "rgba(255, 215, 0, 0.5)"
-                        : "rgba(0, 0, 0, 0.6)",
-                      color: "white",
-                      fontFamily: "Play, sans-serif",
-                    }),
-                    singleValue: (provided) => ({
-                      ...provided,
-                      color: "white",
-                    }),
-                    menu: (provided) => ({
-                      ...provided,
-                      backgroundColor: "transparent",
-                      maxHeight: "250px",
-                      overflow: "hidden",
-                      borderColor: "yellow",
-                    }),
-                    menuList: (provided) => ({
-                      ...provided,
-                      overflowY: "scroll",
-                      maxHeight: "250px",
-                      scrollbarWidth: "none",
-                      msOverflowStyle: "none",
-                      "&::-webkit-scrollbar": {
-                        display: "none",
-                      },
-                    }),
-                  }}
-                />
-              </div>
-
-              <div className="md:max-w-[100%] w-full h-[400px] md:max-h-[100%] mt-3 overflow-auto">
-                <h2 className="font-font2 text-yellow-500 text-[16px]">
-                  Preview:
-                </h2>
-
-                <SyntaxHighlighter language={language.value} style={dracula}>
-                  {content}
-                </SyntaxHighlighter>
-              </div>
             </div>
           </div>
         </div>
